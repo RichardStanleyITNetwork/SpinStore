@@ -49,9 +49,9 @@ body
   text-decoration: none;
 }
 
-.nav-bar li a:hover 
+.nav-bar li a: hover 
 {
-  transform: translate(-0.1rem, -0.1rem);
+   transform: scale(1.05);
   box-shadow: 0.1rem 0.1rem 0 var(--black);
 }
 
@@ -386,4 +386,5 @@ th
     margin-bottom: 10px;
     min-height: 18px;
 }
+
 
