@@ -35,6 +35,15 @@ body
   padding: 0;
 }
 
+.nav-bar a: hover 
+{
+   transform: scale(1.20);
+  box-shadow: 0.1rem 0.1rem 0 var(--black);
+    text-decoration: underlined;
+}
+
+
+
 .nav-bar li 
 {
   margin-left: 20px;
@@ -51,7 +60,7 @@ body
 
 .nav-bar li a: hover 
 {
-   transform: scale(1.05);
+   transform: scale(1.20);
   box-shadow: 0.1rem 0.1rem 0 var(--black);
 }
 
@@ -386,5 +395,6 @@ th
     margin-bottom: 10px;
     min-height: 18px;
 }
+
 
 
