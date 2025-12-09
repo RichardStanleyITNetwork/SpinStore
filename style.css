@@ -1,9 +1,4 @@
-/*
-Romario Porteous
-2305778
-UE3
-Individual Assignment #2
-*/
+
 
 body
 {
@@ -56,7 +51,8 @@ body
 
 .nav-bar li a:hover 
 {
-  background-color: #602c2c;
+  transform: translate(-0.1rem, -0.1rem);
+  box-shadow: 0.1rem 0.1rem 0 var(--black);
 }
 
 .grid-container 
@@ -390,3 +386,4 @@ th
     margin-bottom: 10px;
     min-height: 18px;
 }
+
