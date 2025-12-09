@@ -1,0 +1,392 @@
+/*
+Romario Porteous
+2305778
+UE3
+Individual Assignment #2
+*/
+
+body
+{
+    background-image: url('Assets/Hero\ Background.jpg');
+    color: white;
+}
+
+/*Controls all navbar*/
+#navbar 
+{
+  padding: 0;
+}
+
+.nav-container 
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+#logo 
+{
+  height: 90px;
+  width: 100px;
+  background: transparent;
+}
+
+.nav-bar 
+{
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar li 
+{
+  margin-left: 20px;
+}
+
+.nav-bar li a 
+{
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-bar li a:hover 
+{
+  background-color: #602c2c;
+}
+
+.grid-container 
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+  text-align: center;
+}
+
+#displayIMG
+{
+    height: 250px;
+    width: 250px;
+}
+
+#FV
+{
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 3px; 
+}
+
+h1
+{
+    text-align: center;
+    font-size: 4em;
+    font-weight: bold;
+    font-family:fantasy;
+    letter-spacing: 3px;
+    color: whitesmoke;
+
+}
+
+.footer
+{
+    text-align: center;
+    padding: 20px;
+}
+
+/*PRODUCT PAGE*/
+.parent 
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 8px;
+  padding: 20px;
+  background-color: #111;
+}
+
+.child 
+{
+  grid-row: span 2 / span 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  background-color: #000;
+  max-width: 400px;
+  margin: auto;
+}
+
+.div5, .div6, .div7, .div8 
+{
+  grid-row-start: 3;
+}
+
+.div9, .div10, .div11, .div12 
+{
+  grid-row-start: 5;
+}
+
+.child img 
+{
+  width: 100%;
+  border-radius: 8px;
+  transition: 0.4s ease;
+}
+
+.child img:hover 
+{
+  transform: scale(1.05);
+}
+
+.child p 
+{
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.newRelease 
+{
+  color: #ff007f;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
+}
+
+.saleRelease 
+{
+  color: #4737d4;
+  font-weight: bold;
+  text-shadow: 0 0 5px #4737d4, 0 0 10px #4737d4;
+}
+
+/*CART PAGE*/
+#cart 
+{
+  width: 90%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+table 
+{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td 
+{
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th 
+{
+  background-color: #302b2b;
+}
+
+#checkClear 
+{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#checkClear button
+{
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#checkClear button:hover 
+{
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/*CHECK OUT PAGE*/
+
+/* Center the Order Summary box */
+#orderSummary 
+{
+    width: 380px;
+    margin: 0 auto 25px auto;       
+    padding: 20px;
+    background: rgb(53, 48, 48);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    text-align: center;             
+}
+
+#orderSummary h2 
+{
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#orderSummary #orderTotal 
+{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.checkOutFormDiv 
+{
+    width: 420px;
+    margin: 40px auto;           
+    background: grey;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+}
+
+.checkOutFormDiv label 
+{
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #333;
+}
+
+.checkOutFormDiv input 
+{
+    width: 90%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #999;
+    font-size: 15px;
+}
+
+.checkOutFormDiv .error 
+{
+    color: red;
+    font-size: 14px;
+    min-height: 18px;
+}
+
+#placeOrderBtn 
+{
+    width: 100%;
+    padding: 14px;
+    margin-top: 18px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+#placeOrderBtn:hover 
+{
+    background: #1e7e34;
+    transform: scale(1.02);
+}
+
+
+/*Reigstrer / login  page*/
+.login-page 
+{
+    background-image: url('Assets/Hero\ Background.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container 
+{
+    background: white;
+    width: 400px;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 100px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+    text-align: center;
+}
+
+.tabs 
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab 
+{
+    width: 48%;
+    padding: 10px;
+    border: none;
+    background: #ddd;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab.active 
+{
+    background: #007bff;
+    color: white;
+}
+
+.form 
+{
+    display: none;
+}
+
+.form.active 
+{
+    display: block;
+}
+
+.form input 
+{
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #999;
+}
+
+.form-btn 
+{
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error-msg 
+{
+    color: red;
+    margin-bottom: 10px;
+    min-height: 18px;
+}
