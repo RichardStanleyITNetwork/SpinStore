@@ -60,6 +60,7 @@ document.getElementById("registerBtn").addEventListener("click", () => {
         return;
     }
 
+    // Question 1a.iv
     let birthDate = new Date(dob);
     let age = new Date().getFullYear() - birthDate.getFullYear();
     let monthDiff = new Date().getMonth() - birthDate.getMonth();
@@ -71,7 +72,7 @@ document.getElementById("registerBtn").addEventListener("click", () => {
         return;
     }
 
-    // TRN validation: exactly 9 digits
+    // Question 1a.v
     let trnPattern = /^\d{9}$/;
     if (!trnPattern.test(trn)) {
         error.textContent = "TRN must be exactly 9 digits.";
@@ -99,6 +100,7 @@ document.getElementById("registerBtn").addEventListener("click", () => {
         invoices: []
     };
 
+    // Question 1a.vi
     regData.push(userObj);
     localStorage.setItem("RegistrationData", JSON.stringify(regData));
 
@@ -116,6 +118,7 @@ if (!localStorage.getItem("loginAttempts")) {
     localStorage.setItem("loginAttempts", "0");
 }
 
+// Question 1b.iv
 document.getElementById("loginBtn").addEventListener("click", () => {
     let loginTRN = document.getElementById("loginTRN").value.trim();
     let loginPass = document.getElementById("loginPass").value.trim();
@@ -129,6 +132,7 @@ document.getElementById("loginBtn").addEventListener("click", () => {
         return;
     }
 
+    // Question 1b.ii 
     let regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
     let user = regData.find(u => u.trn === loginTRN);
 
@@ -151,6 +155,7 @@ document.getElementById("loginBtn").addEventListener("click", () => {
     window.location.href = "products.html";
 });
 
+// Question 1b.iii
 function checkLock() {
     let attempts = parseInt(localStorage.getItem("loginAttempts")) || 0;
     if (attempts >= 3) 
@@ -159,11 +164,13 @@ function checkLock() {
     }
 }
 
+// Question 1b.v
 // Cancel login
 document.getElementById("loginCancelBtn").addEventListener("click", () => {
     document.getElementById("loginForm").reset();
 });
 
+// Question 1b.vi
 // --- RESET PASSWORD ---
 document.getElementById("resetPasswordLink").addEventListener("click", () => {
     let trn = prompt("Enter your TRN to reset password:");
@@ -188,4 +195,5 @@ document.getElementById("resetPasswordLink").addEventListener("click", () => {
 
     alert("Password updated successfully!");
 });
+
 
