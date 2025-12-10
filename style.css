@@ -9,37 +9,42 @@ body
 /*Controls all navbar*/
 #navbar 
 {
-  padding: 0;
+  width:100%;
+  position: fixed;      
+  top: 0;
+  left: 10;
+  z-index: 9999;
+  padding:10px;
 }
+
 
 .nav-container 
 {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  gap: 10/px;
+  padding:0;
 }
 
 #logo 
 {
   height: 90px;
   width: 100px;
-  background: transparent;
+  border-radius:10rem;
+  object-fit: cover;
+  
 }
 
 .nav-bar 
 {
   list-style-type: none;
   display: flex;
-  margin: 0;
+  margin:0 ;
   padding: 0;
-}
+  overflow:hidden;
+  justify-content:space-between;
 
-.nav-bar a: hover 
-{
-   transform: scale(1.20);
-  box-shadow: 0.1rem 0.1rem 0 var(--black);
-    text-decoration: underlined;
+ 
 }
 
 
@@ -47,6 +52,7 @@ body
 .nav-bar li 
 {
   margin-left: 20px;
+  font-weight: 700;
 }
 
 .nav-bar li a 
@@ -56,12 +62,33 @@ body
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition: 0.3s ease;
 }
 
-.nav-bar li a: hover 
+.nav-bar li a:hover 
 {
-   transform: scale(1.20);
-  box-shadow: 0.1rem 0.1rem 0 var(--black);
+ 
+ transform: scale(1.6);
+
+}
+
+.AddToCartBtn
+{
+font-style:italic;
+font-weight: 700;
+border-radius: 11px;
+padding:0.7rem;
+color: whitesmoke;
+background-image: url('Assets/bnwjpg.jpg');
+border-color:whitesmoke;
+box-shadow: #000;
+}
+
+.AddToCartBtn:hover
+{
+ background: whitesmoke;
+ color: #000;
+
 }
 
 .grid-container 
@@ -395,6 +422,7 @@ th
     margin-bottom: 10px;
     min-height: 18px;
 }
+
 
 
 
