@@ -77,6 +77,7 @@ function validateForm() {
     return isValid;
 }
 
+// Question 4d
 // Place Order
 document.getElementById("placeOrderBtn").addEventListener("click", function () {
     if (!validateForm()) return;
@@ -136,13 +137,14 @@ document.getElementById("placeOrderBtn").addEventListener("click", function () {
     window.location.href = "index.html";
 });
 
-// Card input cleanup
 document.getElementById("cardNumber").addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, "");
 });
 
+// Question 4e
 // Cancel button
 document.getElementById("cancelBtn").addEventListener("click", () => {
     window.location.href = "cart.html";
 });
+
 
