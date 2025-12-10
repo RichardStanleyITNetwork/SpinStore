@@ -195,6 +195,7 @@ function updateQty(index, change) {
 // Only run cart code if the cart page exists
 if (document.getElementById("cartItems")) {
 
+    // Question 3d
     // Ckear cart button
     if (document.getElementById("clearCartBtn")) {
         document.getElementById("clearCartBtn").addEventListener("click", () => {
@@ -203,6 +204,7 @@ if (document.getElementById("cartItems")) {
         });
     }
 
+    // Question 3e
     // Checkout Button
     if (document.getElementById("checkoutBtn")) {
         document.getElementById("checkoutBtn").addEventListener("click", () => {
@@ -210,6 +212,7 @@ if (document.getElementById("cartItems")) {
         });
     }
 
+    // Question 3f
     // Close Button
     if (document.getElementById("closeBtn")) {
         document.getElementById("closeBtn").addEventListener("click", () => {
@@ -219,6 +222,7 @@ if (document.getElementById("cartItems")) {
 
     loadCart(); 
 }
+
 
 
 
