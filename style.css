@@ -37,6 +37,11 @@ body {
 }
 
 .nav-bar li {
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.nav-bar li {
   margin-left: 20px;
   font-weight: 700;
 }
@@ -52,6 +57,22 @@ body {
 
 .nav-bar li a:hover {
   transform: scale(1.6);
+}
+
+.AddToCartBtn {
+  font-style: italic;
+  font-weight: 700;
+  border-radius: 11px;
+  padding: 0.7rem;
+  color: whitesmoke;
+  background-image: url("Assets/bnwjpg.jpg");
+  border-color: whitesmoke;
+  box-shadow: #000;
+}
+
+.AddToCartBtn:hover {
+  background: whitesmoke;
+  color: #000;
 }
 
 .AddToCartBtn {
