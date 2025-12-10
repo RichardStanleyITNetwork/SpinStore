@@ -1,3 +1,12 @@
+/*
+Group 27 - Vinyl Store
+Marques Campbell (2405419) - Mon @ 6PM
+Romario Porteous (2305778) - Wed @ 6PM
+Dillan Ramdaine (2000199) - Wed @ 6PM
+Victoria Wilson (2207197) - Wed @ 6PM
+Richard Stanley (2307584) - Wed @ 6PM
+*/
+
 // Reset login attempts
 let resetBtn = document.getElementById("resetAttemptsBtn");
 if (resetBtn) {
@@ -7,3 +16,4 @@ if (resetBtn) {
         window.location.href = "LoginRegistration.html";
     });
 }
+
