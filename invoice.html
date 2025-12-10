@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Invoice</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="nav-container">
+                <img id="logo" src="../Assets/logo.gif" alt="Spin Culture Logo">
+                <ul class="nav-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="LoginRegistration.html">Login/Registration</a></li>
+                    <li><a href="invoice.html">Invoice</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>View Invoice</h1>
+
+        <!-- Input to search invoice by invoice number -->
+        <div class="invoice-search">
+            <label for="invoiceCode">Enter Invoice Number:</label>
+            <input type="text" id="invoiceCode" placeholder="e.g. INV-1678901234567">
+            <button id="searchInvoiceBtn">View Invoice</button>
+            <p class="error" id="invoiceError"></p>
+        </div>
+
+        <!-- Container where invoice will be rendered -->
+        <div id="invoiceContainer"></div>
+
+        <button id="seeAllInvoicesBtn">See All Invoices</button>
+    </main>
+
+    <script src="../viewInvoice.js" defer></script>
+</body>
+</html>
