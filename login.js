@@ -15,21 +15,28 @@ document.getElementById("registerTab").addEventListener("click", () => {
     document.getElementById("loginTab").classList.remove("active");
 });
 
-
 // --- REGISTRATION ---
 document.getElementById("registerBtn").addEventListener("click", () => {
 
-    let name = document.getElementById("regName").value.trim();
+    let firstName = document.getElementById("regFirst").value.trim();
+    let lastName = document.getElementById("regLast").value.trim();
     let dob = document.getElementById("regDOB").value.trim();
+    let gender = document.getElementById("regGender").value.trim();
+    let phone = document.getElementById("regPhone").value.trim();
     let email = document.getElementById("regEmail").value.trim();
-    let user = document.getElementById("regUser").value.trim();
+    let trn = document.getElementById("regTRN").value.trim();
     let pass = document.getElementById("regPass").value.trim();
 
     let error = document.getElementById("regError");
     error.textContent = "";
 
-    if (!name || !dob || !email || !user || !pass) {
-        error.textContent = "Please fill in all fields.";
+    if (!firstName || !lastName || !dob || !gender || !phone || !email || !trn || !pass) {
+        error.textContent = "All fields are required.";
+        return;
+    }
+
+    if (phone.length < 9) {
+        error.textContent = "Phone number must be at least 9 digits";
         return;
     }
 
@@ -39,34 +46,130 @@ document.getElementById("registerBtn").addEventListener("click", () => {
         return;
     }
 
-    // Save registration info
-    let userData = { name, dob, email, user, pass };
-    localStorage.setItem("registeredUser", JSON.stringify(userData));
-
-    alert("Registration Successful! You can now log in.");
-});
-
-
-// --- LOGIN ---
-document.getElementById("loginBtn").addEventListener("click", () => {
-
-    let loginUser = document.getElementById("loginUser").value.trim();
-    let loginPass = document.getElementById("loginPass").value.trim();
-
-    let error = document.getElementById("loginError");
-    error.textContent = "";
-
-    let savedUser = JSON.parse(localStorage.getItem("registeredUser"));
-
-    if (!savedUser) {
-        error.textContent = "No registered account found.";
+    if (pass.length < 8) {
+        error.textContent = "Password must be at least 8 characters.";
         return;
     }
 
-    if (loginUser === savedUser.user && loginPass === savedUser.pass) {
-        alert("Login successful!");
-        window.location.href = "index.html";
-    } else {
-        error.textContent = "Incorrect username or password.";
+    let birthDate = new Date(dob);
+    let age = new Date().getFullYear() - birthDate.getFullYear();
+    let monthDiff = new Date().getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && new Date().getDate() < birthDate.getDate())) {
+        age--;
     }
+    if (age < 18) {
+        error.textContent = "You must be at least 18 years old.";
+        return;
+    }
+
+    // TRN validation: exactly 9 digits
+    let trnPattern = /^\d{9}$/;
+    if (!trnPattern.test(trn)) {
+        error.textContent = "TRN must be exactly 9 digits.";
+        return;
+    }
+
+    // Load existing registration data
+    let regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
+    if (regData.some(u => u.trn === trn)) {
+        error.textContent = "TRN already registered!";
+        return;
+    }
+
+    let userObj = {
+        firstName: firstName,
+        lastName: lastName,
+        dob: dob,
+        gender: gender,
+        phone: phone,
+        email: email,
+        trn: trn,
+        password: pass,
+        dateRegistered: new Date().toLocaleDateString(),
+        cart: {},
+        invoices: []
+    };
+
+    regData.push(userObj);
+    localStorage.setItem("RegistrationData", JSON.stringify(regData));
+
+    alert("Registration successful! You may now log in.");
+    document.getElementById("loginTab").click();
+});
+
+// Cancel registration
+document.getElementById("cancelBtn").addEventListener("click", () => {
+    document.getElementById("registerForm").reset();
+});
+
+// --- LOGIN ---
+if (!localStorage.getItem("loginAttempts")) {
+    localStorage.setItem("loginAttempts", "0");
+}
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+    let loginTRN = document.getElementById("loginTRN").value.trim();
+    let loginPass = document.getElementById("loginPass").value.trim();
+    let error = document.getElementById("loginError");
+    error.textContent = "";
+
+    let attempts = parseInt(localStorage.getItem("loginAttempts")) || 0;
+
+    if (attempts >= 3) {
+        window.location.href = "errorLockedAccount.html";
+        return;
+    }
+
+    let regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
+    let user = regData.find(u => u.trn === loginTRN);
+
+    if (!user || user.password !== loginPass) {
+        attempts++;
+        localStorage.setItem("loginAttempts", attempts.toString());
+        checkLock();
+        return;
+    }
+
+    // Successful login
+    alert("Login successful!");
+    localStorage.setItem("loginAttempts", "0"); //should reset attempts
+    window.location.href = "products.html";
+});
+
+function checkLock() {
+    let attempts = parseInt(localStorage.getItem("loginAttempts")) || 0;
+    if (attempts >= 3) 
+    {
+        window.location.href = "errorLockedAccount.html";
+    }
+}
+
+// Cancel login
+document.getElementById("loginCancelBtn").addEventListener("click", () => {
+    document.getElementById("loginForm").reset();
+});
+
+// --- RESET PASSWORD ---
+document.getElementById("resetPasswordLink").addEventListener("click", () => {
+    let trn = prompt("Enter your TRN to reset password:");
+    if (!trn) return;
+
+    let regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
+    let user = regData.find(u => u.trn === trn);
+
+    if (!user) {
+        alert("TRN not found.");
+        return;
+    }
+
+    let newPass = prompt("Enter new password (min 8 characters):");
+    if (!newPass || newPass.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return;
+    }
+
+    user.password = newPass;
+    localStorage.setItem("RegistrationData", JSON.stringify(regData));
+
+    alert("Password updated successfully!");
 });
