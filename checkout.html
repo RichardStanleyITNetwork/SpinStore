@@ -1,148 +1,70 @@
-let grandTotal = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-// --- Load Order Summary ---
-function loadOrderSummary() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    grandTotal = 0;
+    <title>Checkout</title>
 
-    cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        const tax = subtotal * 0.15;
-        const totalWithTax = subtotal + tax;
-        grandTotal += totalWithTax;
-    });
+    <link rel="stylesheet" href="../style.css">
 
-    document.getElementById("orderTotal").textContent =
-        "Order Total: $" + grandTotal.toFixed(2);
-}
+</head>
 
-loadOrderSummary();
+<!--Header of Webpage-->
+<header>
+  <nav id="navbar">
+    <div class="nav-container">
+      <img id="logo" src="Assets/logo.gif" alt="Spin Culture Logo">
+      <ul class="nav-bar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="LoginRegistration.html">Login/Registration</a></li>
+        <li><a href="invoice.html">Invoice</a></li>
+        <li><a href="about.html">Abouts Us</a></li>
+    </div>
+  </nav>
+</header>
 
-// --- Form Validation ---
-function validateForm() {
-    let isValid = true;
+<body>
 
-    const name = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const card = document.getElementById("cardNumber").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const amountPaid = parseFloat(document.getElementById("amount").value.trim());
+<h1>Checkout</h1>
 
-    document.getElementById("nameError").textContent = "";
-    document.getElementById("emailError").textContent = "";
-    document.getElementById("cardError").textContent = "";
-    document.getElementById("addressError").textContent = "";
-    document.getElementById("amountError").textContent = "";
 
-    // Name
-    if (!name) {
-        document.getElementById("nameError").textContent = "Name is required.";
-        isValid = false;
-    }
 
-    // Email
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
-        document.getElementById("emailError").textContent = "Email is required.";
-        isValid = false;
-    } else if (!emailPattern.test(email)) {
-        document.getElementById("emailError").textContent = "Invalid email format.";
-        isValid = false;
-    }
+<div class="checkOutFormDiv">
+  <form id="checkoutForm">
 
-    // Card
-    if (card.length !== 16 || isNaN(card)) {
-        document.getElementById("cardError").textContent = "Card number must be 16 digits.";
-        isValid = false;
-    }
+      <section id="orderSummary">
+        <h2>Your Order</h2>
+        <p id="orderTotal"></p>
+      </section>
 
-    // Amount
-    if (isNaN(amountPaid)) {
-        document.getElementById("amountError").textContent =
-            "Please enter the amount being paid.";
-        isValid = false;
-    } else if (amountPaid !== parseFloat(grandTotal.toFixed(2))) {
-        document.getElementById("amountError").textContent =
-            "Amount must exactly match Order Total: $" + grandTotal.toFixed(2);
-        isValid = false;
-    }
+      <label>Full Name:</label>
+      <input type="text" id="fullName">
+      <p class="error" id="nameError"></p>
 
-    // Address
-    if (!address) {
-        document.getElementById("addressError").textContent = "Address is required.";
-        isValid = false;
-    }
+      <label>Email:</label>
+      <input type="text" id="email">
+      <p class="error" id="emailError"></p>
 
-    return isValid;
-}
+      <label>Card Number:</label>
+      <input type="text" id="cardNumber" maxlength="16">
+      <p class="error" id="cardError"></p>
 
-// --- Place Order ---
-document.getElementById("placeOrderBtn").addEventListener("click", function () {
-    if (!validateForm()) return;
+      <label for="amount">Amount being Paid</label>
+      <input type="number" id="amount" name="amount" step="0.01" min="0" placeholder="0.00">
+      <p class="error" id="amountError"></p>
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (cart.length === 0) {
-        alert("Cart is empty.");
-        return;
-    }
+      <label>Address:</label>
+      <input type="text" id="address">
+      <p class="error" id="addressError"></p>
 
-    const currentTRN = localStorage.getItem("currentUserTRN"); 
-    const regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
-    let customerName = document.getElementById("fullName").value.trim();
-    let trnToUse = null;
+      <button type="button" id="placeOrderBtn">Place Order</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+  </form>
+</div>
 
-    // If logged in, get customer info
-    if (currentTRN) {
-        const user = regData.find(u => u.trn === currentTRN);
-        if (user) {
-            customerName = `${user.firstName} ${user.lastName}`;
-            trnToUse = user.trn;
-        }
-    }
-
-    // Create invoice
-    const invoice = {
-        invoiceNumber: "INV-" + Date.now(),
-        date: new Date().toLocaleDateString(),
-        shippingAddress: document.getElementById("address").value.trim(),
-        items: cart.map(item => ({
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price,
-            discount: item.discount || 0
-        })),
-        subtotal: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-        taxes: cart.reduce((sum, item) => sum + (item.price * item.quantity * 0.15), 0),
-        total: grandTotal,
-        trn: trnToUse,
-        customerName: customerName
-    };
-
-    // Append invoice to user's record if logged in
-    if (trnToUse) {
-        const userIndex = regData.findIndex(u => u.trn === trnToUse);
-        regData[userIndex].invoices.push(invoice);
-        localStorage.setItem("RegistrationData", JSON.stringify(regData));
-    }
-
-    // Append invoice to global invoices
-    const allInvoices = JSON.parse(localStorage.getItem("AllInvoices")) || [];
-    allInvoices.push(invoice);
-    localStorage.setItem("AllInvoices", JSON.stringify(allInvoices));
-
-    // Clear cart
-    localStorage.removeItem("cart");
-
-    alert(`Order placed successfully! Invoice #${invoice.invoiceNumber} has been generated.`);
-    window.location.href = "index.html";
-});
-
-// --- Card Number Input Sanitization ---
-document.getElementById("cardNumber").addEventListener("input", function () {
-    this.value = this.value.replace(/\D/g, "");
-});
-
-// --- Cancel Button ---
-document.getElementById("cancelBtn").addEventListener("click", () => {
-    window.location.href = "cart.html";
-});
+<script src="checkout.js" defer></script>
+</body>
+</html>
