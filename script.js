@@ -3,78 +3,78 @@ let allProducts = [
     {
         name: "Vie",
         price: 7600,
-        description: "Album: Vie - Artist: Doja Cat",
+        description: "Album: Vie<br>Artist: Doja Cat",
         image: "Assets/VIE by Doja.jpg",
         label: "newRelease"
     },
     {
         name: "Beauty Behind the Madness",
         price: 3500,
-        description: "Album: Beauty Behind the Madness - Artist: The Weeknd",
+        description: "Album: Beauty Behind the Madness<br>Artist: The Weeknd",
         image: "Assets/BBTM by Abel.jpg",
         label: "saleRelease" 
     },
     {
         name: "Ctrl",
         price: 2500,
-        description: "Album: CTRL - Artist: SZA",
+        description: "Album: CTRL<br>Artist: SZA",
         image: "Assets/Ctrl by SZA.jpg"
     },
     {
         name: "Freudian",
         price: 3500,
-        description: "Album: Freudian - Artist: Daniel Caesar",
+        description: "Album: Freudian<br>Artist: Daniel Caesar",
         image: "Assets/Freudian by Daniel Caesar.jpg"
     },
     {
         name: "good kid, m.a.a.d city",
         price: 1000,
-        description: "Album: GKMC - Artist: Kendrick Lamar",
+        description: "Album: GKMC<br>Artist: Kendrick Lamar",
         image: "Assets/GKMC by Kenny.jpg",
         label: "newRelease" 
     },
     {
         name: "Mr & Mrs Morales",
         price: 3900,
-        description: "Album: Mr & Mrs Morales - Artist: Kendrick Lamar",
+        description: "Album: Mr & Mrs Morales<br>Artist: Kendrick Lamar",
         image: "Assets/Mr & mrs Morales by Kenny.jpg"
     },
     {
         name: "Scarlet",
         price: 4000,
-        description: "Album: Scarlet - Artist: Doja Cat",
+        description: "Album: Scarlet<br>Artist: Doja Cat",
         image: "Assets/Scarlet by Doja.jpg",
         label: "newRelease" 
     },
     {
         name: "Utopia",
         price: 5000,
-        description: "Album: Utopia - Artist: Travis Scott",
+        description: "Album: Utopia<br>Artist: Travis Scott",
         image: "Assets/Utopia by Travis Scott.jpg"
     },
     {
         name: "Planet Her",
         price: 2900,
-        description: "Album: Planet Her - Artist: Doja Cat",
+        description: "Album: Planet Her<br>Artist: Doja Cat",
         image: "Assets/Planet her by Doja.jpg"
     },
     {
         name: "Melodrama",
         price: 3400,
-        description: "Album: Melodrama - Artist: Lorde",
+        description: "Album: Melodrama<br>Artist: Lorde",
         image: "Assets/melodrama by lorde.jpg",
         label: "saleRelease" 
     },
     {
         name: "Ruby",
         price: 6900,
-        description: "Album: Ruby - Artist: Jennie",
+        description: "Album: Ruby<br>Artist: Jennie",
         image: "Assets/Ruby by Jennie.jpg"
     },
     {
         name: "LUX",
         price: 8000,
-        description: "Album: LUX - Artist: Rosalia",
+        description: "Album: LUX<br>Artist: Rosalia",
         image: "Assets/Lux by Rosalia.jpg"
     }
 ];
@@ -201,3 +201,4 @@ if (document.getElementById("cartItems")) {
 
     loadCart(); 
 }
+
