@@ -125,13 +125,19 @@ document.getElementById("loginBtn").addEventListener("click", () => {
 
     if (!user || user.password !== loginPass) {
         attempts++;
+        alert("Invalid TRN or Password");
         localStorage.setItem("loginAttempts", attempts.toString());
         checkLock();
         return;
+    } else {
+        localStorage.setItem("currentUserTRN", user.trn); 
     }
 
     // Successful login
     alert("Login successful!");
+
+    localStorage.setItem("loggedInTRN", loginTRN);
+
     localStorage.setItem("loginAttempts", "0"); //should reset attempts
     window.location.href = "products.html";
 });
@@ -155,7 +161,7 @@ document.getElementById("resetPasswordLink").addEventListener("click", () => {
     if (!trn) return;
 
     let regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
-    let user = regData.find(u => u.trn === trn);
+    let user = regData.find(u => u.trn === loggedTRN);
 
     if (!user) {
         alert("TRN not found.");
