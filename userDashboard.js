@@ -17,7 +17,7 @@ const showAllInvoicesBtn = document.getElementById("showAllInvoicesBtn");
 const searchUserInvoicesBtn = document.getElementById("searchUserInvoicesBtn");
 const searchTRNInput = document.getElementById("searchTRNInput");
 
-// --- 1. Show User Frequency ---
+// Question 6A
 function ShowUserFrequency() {
     const regData = JSON.parse(localStorage.getItem("RegistrationData")) || [];
 
@@ -45,7 +45,7 @@ function ShowUserFrequency() {
     userFreqOutput.textContent = `User Frequency by Gender:\n${JSON.stringify(genderCount, null, 2)}\n\nAge Groups:\n${JSON.stringify(ageGroups, null, 2)}`;
 }
 
-// --- 2. Show All Invoices ---
+// Question 6B
 function ShowInvoices() {
     const allInvoices = JSON.parse(localStorage.getItem("AllInvoices")) || [];
     if (allInvoices.length === 0) {
@@ -58,7 +58,7 @@ function ShowInvoices() {
     }).join("\n");
 }
 
-// --- 3. Show User Invoices by TRN ---
+// Question 6C
 function GetUserInvoices(trn) {
     if (!trn) {
         userInvoicesOutput.textContent = "Please enter a TRN.";
@@ -85,4 +85,5 @@ searchUserInvoicesBtn.addEventListener("click", () => {
     const trn = searchTRNInput.value.trim();
     GetUserInvoices(trn);
 });
+
 
