@@ -89,3 +89,8 @@ document.getElementById("placeOrderBtn").addEventListener("click", function () {
 document.getElementById("cardNumber").addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, ""); 
 });
+
+// Close Button
+document.getElementById("cancelBtn").addEventListener("click", () => {
+    window.location.href = "cart.html";
+});
