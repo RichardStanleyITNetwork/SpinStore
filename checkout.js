@@ -102,6 +102,7 @@ document.getElementById("placeOrderBtn").addEventListener("click", function () {
         }
     }
 
+    // Question 5A
     // Create invoice
     const invoice = {
         invoiceNumber: "INV-" + Date.now(),
@@ -126,6 +127,7 @@ document.getElementById("placeOrderBtn").addEventListener("click", function () {
         localStorage.setItem("RegistrationData", JSON.stringify(regData));
     }
 
+    // Question 5B
     // Append to global AllInvoices
     const allInvoices = JSON.parse(localStorage.getItem("AllInvoices")) || [];
     allInvoices.push(invoice);
@@ -134,6 +136,7 @@ document.getElementById("placeOrderBtn").addEventListener("click", function () {
     // Clear cart
     localStorage.removeItem("cart");
 
+    // Question 5C
     alert(`Order placed successfully! Invoice #${invoice.invoiceNumber} has been generated.`);
     window.location.href = "index.html";
 });
@@ -147,6 +150,7 @@ document.getElementById("cardNumber").addEventListener("input", function () {
 document.getElementById("cancelBtn").addEventListener("click", () => {
     window.location.href = "cart.html";
 });
+
 
 
 
