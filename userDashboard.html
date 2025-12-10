@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User & Invoice Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="nav-container">
+                <img id="logo" src="../Assets/logo.gif" alt="Spin Culture Logo">
+                <ul class="nav-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>User & Invoice Dashboard</h1>
+
+        <section>
+            <h2>User Statistics</h2>
+            <button id="showUserFreqBtn">Show User Frequency</button>
+            <pre id="userFreqOutput"></pre>
+        </section>
+
+        <section>
+            <h2>All Invoices</h2>
+            <button id="showAllInvoicesBtn">Show All Invoices</button>
+            <pre id="allInvoicesOutput"></pre>
+        </section>
+
+        <section>
+            <h2>Search User Invoices by TRN</h2>
+            <input type="text" id="searchTRNInput" placeholder="Enter TRN">
+            <button id="searchUserInvoicesBtn">Search</button>
+            <pre id="userInvoicesOutput"></pre>
+        </section>
+    </main>
+
+    <script src="../userDashboard.js" defer></script>
+</body>
+</html>
