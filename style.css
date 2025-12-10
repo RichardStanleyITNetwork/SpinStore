@@ -301,7 +301,7 @@ th {
   min-height: 18px;
 }
 
-#placeOrderBtn {
+#placeOrderBtn, #cancelBtn {
   width: 100%;
   padding: 14px;
   margin-top: 18px;
@@ -393,3 +393,4 @@ th {
   margin-bottom: 10px;
   min-height: 18px;
 }
+
