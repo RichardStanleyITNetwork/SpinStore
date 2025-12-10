@@ -7,6 +7,7 @@ Victoria Wilson (2207197) - Wed @ 6PM
 Richard Stanley (2307584) - Wed @ 6PM
 */
 
+// Question 1b.iii
 // Reset login attempts
 let resetBtn = document.getElementById("resetAttemptsBtn");
 if (resetBtn) {
@@ -16,4 +17,5 @@ if (resetBtn) {
         window.location.href = "LoginRegistration.html";
     });
 }
+
 
