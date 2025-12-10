@@ -12,6 +12,7 @@ const searchBtn = document.getElementById("searchInvoiceBtn");
 const invoiceCodeInput = document.getElementById("invoiceCode");
 const errorEl = document.getElementById("invoiceError");
 
+// Question 5a
 // Render a single invoice
 function renderInvoice(inv) {
     return `
@@ -55,6 +56,7 @@ function renderInvoice(inv) {
     `;
 }
 
+// Question 6b
 // Display all invoices
 function displayAllInvoices() {
     invoiceContainer.innerHTML = "";
@@ -68,6 +70,7 @@ function displayAllInvoices() {
     });
 }
 
+// Question 6c
 // Search invoice by code
 function searchInvoiceByCode(code) {
     invoiceContainer.innerHTML = "";
@@ -81,7 +84,6 @@ function searchInvoiceByCode(code) {
     invoiceContainer.innerHTML = renderInvoice(invoice);
 }
 
-// Event: search button
 searchBtn.addEventListener("click", () => {
     const code = invoiceCodeInput.value.trim();
     if (!code) {
@@ -91,13 +93,11 @@ searchBtn.addEventListener("click", () => {
     searchInvoiceByCode(code);
 });
 
-// Admin demo button to see all invoices (can be added in HTML)
 const seeAllBtn = document.getElementById("seeAllInvoices");
 if (seeAllBtn) {
     seeAllBtn.addEventListener("click", () => displayAllInvoices());
 }
 
-// On load: show logged-in user's invoices if TRN exists
 const currentTRN = localStorage.getItem("currentUserTRN");
 if (currentTRN) {
     const allInvoices = JSON.parse(localStorage.getItem("AllInvoices")) || [];
@@ -110,4 +110,5 @@ if (currentTRN) {
         });
     }
 }
+
 
