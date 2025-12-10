@@ -9,6 +9,7 @@ Richard Stanley (2307584) - Wed @ 6PM
 
 let grandTotal = 0;
 
+// Question 3c
 function loadOrderSummary() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     grandTotal = 0;
@@ -146,5 +147,6 @@ document.getElementById("cardNumber").addEventListener("input", function () {
 document.getElementById("cancelBtn").addEventListener("click", () => {
     window.location.href = "cart.html";
 });
+
 
 
