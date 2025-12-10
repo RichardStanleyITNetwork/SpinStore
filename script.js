@@ -186,6 +186,7 @@ function updateQty(index, change) {
 // Only run cart code if the cart page exists
 if (document.getElementById("cartItems")) {
 
+    // Ckear cart button
     if (document.getElementById("clearCartBtn")) {
         document.getElementById("clearCartBtn").addEventListener("click", () => {
             localStorage.removeItem("cart");
@@ -193,12 +194,21 @@ if (document.getElementById("cartItems")) {
         });
     }
 
+    // Checkout Button
     if (document.getElementById("checkoutBtn")) {
         document.getElementById("checkoutBtn").addEventListener("click", () => {
             window.location.href = "checkout.html";
         });
     }
 
+    // Close Button
+    if (document.getElementById("closeBtn")) {
+        document.getElementById("closeBtn").addEventListener("click", () => {
+            window.location.href = "products.html";
+        })
+    }
+
     loadCart(); 
 }
+
 
