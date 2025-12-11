@@ -7,7 +7,8 @@ Victoria Wilson (2207197) - Wed @ 6PM
 Richard Stanley (2307584) - Wed @ 6PM
 */
 
-// product list
+// Question 2a.i
+// product list using array and objects
 let allProducts = [
     {
         name: "Vie",
@@ -88,10 +89,13 @@ let allProducts = [
     }
 ];
 
-// Save product list to localStorage
+
+// Question 2b
+// save product list to localStorage as "AllProducts"
 localStorage.setItem("AllProducts", JSON.stringify(allProducts));
 
-// displaying products dynamically
+// Question 2c
+// displaying products dynamically 
 function displayProducts() {
     const container = document.getElementById("productContainer");
     if (!container) return;
@@ -114,7 +118,7 @@ function displayProducts() {
             <button class="AddToCartBtn" data-name="${product.name}" data-price="${product.price}">
                 Add to Cart
             </button>
-        `;
+        `;  //Question 2d - Each product has an "Add to Cart" button
 
 
         container.appendChild(card);
@@ -124,8 +128,9 @@ function displayProducts() {
 // run dynamic display on products page
 displayProducts();
 
-
+// Question 2e
 // Add items to cart using localStorage
+// shopping cart includes product details
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("AddToCartBtn")) {
 
