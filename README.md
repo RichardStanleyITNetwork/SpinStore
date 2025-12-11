@@ -18,6 +18,11 @@ SpinStore is an online vinyl store that allows users to browse products, add the
 - **User Authentication**: Login and registration system for users.
 - Commented code showing all major project requirements.
 
+## Tools & Frameworks
+- **Languages:** HTML, CSS, JavaScript  
+- **Editor:** Visual Studio Code  
+- **Version Control:** Git & GitHub 
+
 ## Test Credentials
 - **TRN:** 123456789
 - **Password:** password
